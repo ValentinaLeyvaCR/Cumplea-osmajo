@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Estilos CSS (Sin cambios, idéntico al anterior) */
+        /* Estilos CSS (idénticos al anterior) */
         body, html { margin: 0; padding: 0; font-family: 'Kalam', cursive; overflow: hidden; height: 100%; background-color: #f0f8ff; touch-action: manipulation; }
         .page { width: 100%; height: 100vh; position: absolute; top: 0; left: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.5s ease; visibility: hidden; opacity: 0; padding: 20px; box-sizing: border-box; line-height: 1.6; }
         .page.active { visibility: visible; opacity: 1; }
@@ -121,15 +121,14 @@
         </div>
     </div>
 
-    <audio id="sound-background" src="https://archive.org/download/gabbys-dollhouse-theme-song/Gabby%27s%20Dollhouse%20Theme%20Song.mp3" loop preload="auto"></audio>
-    
+    <audio id="sound-background" src="gabby_fondo.mp3" loop preload="auto"></audio>
     <audio id="sound-magic" src="gabby_magia.mp3" preload="auto"></audio>
     <audio id="sound-click" src="gabby_click.mp3" preload="auto"></audio>
     <audio id="sound-bounce" src="gabby_rebote.mp3" preload="auto"></audio>
 
 
     <script>
-        /* --- Lógica de Navegación y Sonidos (Sin cambios) --- */
+        /* --- Lógica de Navegación y Sonidos --- */
         const pages = document.querySelectorAll('.page');
         const btnComenzar = document.getElementById('btn-comenzar');
         const btnEntrar = document.getElementById('btn-entrar');
@@ -147,6 +146,32 @@
         const soundBackground = document.getElementById('sound-background');
         
         soundBackground.volume = 0.3; 
+        
+        // --- CÓDIGO DE DESBLOQUEO DE AUDIO MEJORADO ---
+        
+        // Variable para saber si el audio ya fue desbloqueado
+        let audioUnlocked = false;
+        
+        // Función para desbloquear todos los sonidos
+        function unlockAllAudio() {
+            if (audioUnlocked) return; // Si ya está desbloqueado, no hace nada
+            
+            // Toca y pausa cada sonido. Esto le dice al iPhone "el usuario dio permiso"
+            soundMagic.play(); soundMagic.pause(); soundMagic.currentTime = 0;
+            soundClick.play(); soundClick.pause(); soundClick.currentTime = 0;
+            soundBounce.play(); soundBounce.pause(); soundBounce.currentTime = 0;
+            soundBackground.play(); soundBackground.pause(); soundBackground.currentTime = 0;
+            
+            audioUnlocked = true; // Marca como desbloqueado
+            
+            // Ahora sí, reproduce los sonidos del primer botón
+            playSound(soundMagic);
+            if (soundBackground.paused) {
+                soundBackground.play().catch(e => console.log("Error al iniciar música de fondo"));
+            }
+        }
+        
+        // --- FIN DEL CÓDIGO DE DESBLOQUEO ---
 
         function goToPage(pageId) {
             pages.forEach(page => {
@@ -158,36 +183,32 @@
         }
 
         function playSound(sound) {
+            // Si el audio no está desbloqueado, no intentes reproducir
+            if (!audioUnlocked) return; 
+            
             var promise = sound.play();
             if (promise !== undefined) {
                 promise.then(_ => {
                     sound.currentTime = 0;
                 }).catch(error => {
-                    console.log("Reproducción bloqueada. Se requiere interacción.");
+                    // Esto puede pasar si el usuario hace clic muy rápido
+                    console.log("Reproducción falló:", error);
                 });
             }
         }
         
-        function unlockAudio() {
-            soundMagic.play(); soundMagic.pause(); soundMagic.currentTime = 0;
-            soundClick.play(); soundClick.pause(); soundClick.currentTime = 0;
-            soundBounce.play(); soundBounce.pause(); soundBounce.currentTime = 0;
-            soundBackground.play(); soundBackground.pause(); soundBackground.currentTime = 0;
-            
-            document.body.removeEventListener('click', unlockAudio);
-            document.body.removeEventListener('touchstart', unlockAudio);
-        }
-        document.body.addEventListener('click', unlockAudio);
-        document.body.addEventListener('touchstart', unlockAudio);
 
         /* --- Eventos de Botones --- */
         
         btnComenzar.addEventListener('click', (e) => {
             e.stopPropagation();
-            playSound(soundMagic);
             
-            if (soundBackground.paused) {
-                soundBackground.play().catch(e => console.log("Error al iniciar música de fondo"));
+            // ¡Primer clic! Desbloquea todo y reproduce los sonidos
+            if (!audioUnlocked) {
+                unlockAllAudio(); 
+            } else {
+                // Si ya estaba desbloqueado, solo reproduce el sonido de clic
+                playSound(soundMagic);
             }
             
             goToPage('page-portada');
@@ -210,7 +231,7 @@
         /* Lógica de la Sorpresa */
         btnSorpresa.addEventListener('click', (e) => {
             e.stopPropagation();
-            playSound(soundMagic); // Sonido mágico para la sorpresa
+            playSound(soundMagic); 
             popup.classList.add('active');
             startConfettiRain();
             
@@ -228,11 +249,11 @@
         
         function popularCertificado() {
             const urlParams = new URLSearchParams(window.location.search);
-            const de = urlParams.get('de'); // Busca el parámetro "de"
+            const de = urlParams.get('de');
             const elDe = document.getElementById('cert-de');
             
             if (de) {
-                elDe.textContent = de; // Lo rellena si existe
+                elDe.textContent = de;
             } else {
                 elDe.textContent = "Luz Elena y Valentina"; 
             }
@@ -241,7 +262,7 @@
         btnCertificado.addEventListener('click', (e) => {
             e.stopPropagation();
             playSound(soundClick);
-            popularCertificado(); // Rellena la tarjeta
+            popularCertificado();
             goToPage('page-certificado');
         });
         
