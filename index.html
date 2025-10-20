@@ -8,364 +8,50 @@
     <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
-        /* --- Configuración Global --- */
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: 'Kalam', cursive; /* Nueva fuente */
-            overflow: hidden;
-            height: 100%;
-            background-color: #f0f8ff;
-            touch-action: manipulation;
-        }
-
-        /* --- Contenedor de Páginas --- */
-        .page {
-            width: 100%;
-            height: 100vh;
-            position: absolute;
-            top: 0;
-            left: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: opacity 0.5s ease;
-            visibility: hidden;
-            opacity: 0;
-            padding: 20px;
-            box-sizing: border-box;
-            line-height: 1.6;
-        }
-        .page.active {
-            visibility: visible;
-            opacity: 1;
-        }
-        
-        h1 {
-            font-size: 2.2em;
-            color: #ff69b4; /* Rosa Gabby */
-            text-align: center;
-            text-shadow: 2px 2px #fff;
-        }
-        p {
-            font-size: 1.2em;
-            text-align: center;
-            color: #555;
-        }
-
-        /* --- Botones Estilo Gabby (Pastel) --- */
-        .gabby-button {
-            background: linear-gradient(145deg, #ffb6c1, #ffa0ac); /* Rosa pastel */
-            border: 2px solid #ff69b4;
-            color: #fff;
-            padding: 15px 30px;
-            font-size: 1.1em;
-            font-family: 'Kalam', cursive;
-            font-weight: 700;
-            border-radius: 50px; /* Redondeado */
-            cursor: pointer;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            transition: all 0.2s ease;
-            -webkit-tap-highlight-color: transparent;
-            width: 90%;
-            max-width: 300px;
-            text-align: center;
-            margin-bottom: 15px;
-        }
-        .gabby-button:hover {
-            background: linear-gradient(145deg, #ffc1cb, #ffb0bc);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-        }
-        .gabby-button:active {
-            transform: translateY(1px);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        a.gabby-button {
-            text-decoration: none;
-            box-sizing: border-box;
-        }
-
-        /* --- Efecto Brillo Mágico --- */
-        @keyframes magicShimmer {
-            0% { box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 0 0 10px #fff, 0 0 20px #ffc1cb; }
-            50% { box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 0 0 30px #fff, 0 0 40px #f0e68c; }
-            100% { box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 0 0 10px #fff, 0 0 20px #ffc1cb; }
-        }
-        .shimmer-button {
-            animation: magicShimmer 2s infinite;
-        }
-
-        /* --- Efecto Rebote "Boing" --- */
-        @keyframes boingBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-        .bounce-button:hover {
-            animation: boingBounce 0.5s ease;
-        }
-        
-        /* --- Página 1: Bienvenida --- */
-        #page-bienvenida {
-            background-color: #f0f8ff; /* Azul cielo pastel */
-            background-image: radial-gradient(circle, rgba(255,192,203,0.3) 0%, rgba(255,192,203,0) 70%);
-        }
-        #page-bienvenida .animated-message {
-            font-size: 1.3em;
-            color: #ff69b4;
-            opacity: 0;
-            animation: fadeIn 2s ease 1s forwards;
-            font-weight: 700;
-        }
-
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-
-        /* --- Página 2: Portada (Con tu logo) --- */
-        #page-portada {
-            background: linear-gradient(to bottom, #ffffff, #fdf5e6); /* Blanco a Crema */
-        }
-        #page-portada .logo {
-            width: 250px;
-            max-width: 80%;
-            border-radius: 20px; /* Redondea tu logo */
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-        #page-portada h1 {
-            color: #6a5acd; /* Morado Gabby */
-            font-size: 1.8em;
-        }
-
-        /* --- Página 3: Historia (Bienvenida de Pandy) --- */
-        #page-historia {
-            background-color: #e6e6fa; /* Lavanda */
-            overflow-y: auto;
-            justify-content: flex-start;
-        }
-        .historia-container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            align-items: center;
-            justify-content: flex-start;
-            width: 100%;
-        }
-        .historia-container img {
-            width: 250px; /* Más grande */
-            max-width: 80%;
-            margin-top: 10px;
-        }
-        .cuento-bloque {
-            background: rgba(255, 255, 255, 0.9);
-            border: 4px solid #ffb6c1; /* Borde rosa */
-            border-radius: 20px;
-            padding: 15px;
-            width: 90%;
-            max-width: 500px;
-            font-size: 1.1em;
-            line-height: 1.6;
-            color: #333;
-            text-align: center;
-        }
+        /* Estilos CSS (Sin cambios, idéntico al anterior) */
+        body, html { margin: 0; padding: 0; font-family: 'Kalam', cursive; overflow: hidden; height: 100%; background-color: #f0f8ff; touch-action: manipulation; }
+        .page { width: 100%; height: 100vh; position: absolute; top: 0; left: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.5s ease; visibility: hidden; opacity: 0; padding: 20px; box-sizing: border-box; line-height: 1.6; }
+        .page.active { visibility: visible; opacity: 1; }
+        h1 { font-size: 2.2em; color: #ff69b4; text-align: center; text-shadow: 2px 2px #fff; }
+        p { font-size: 1.2em; text-align: center; color: #555; }
+        .gabby-button { background: linear-gradient(145deg, #ffb6c1, #ffa0ac); border: 2px solid #ff69b4; color: #fff; padding: 15px 30px; font-size: 1.1em; font-family: 'Kalam', cursive; font-weight: 700; border-radius: 50px; cursor: pointer; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); transition: all 0.2s ease; -webkit-tap-highlight-color: transparent; width: 90%; max-width: 300px; text-align: center; margin-bottom: 15px; }
+        .gabby-button:hover { background: linear-gradient(145deg, #ffc1cb, #ffb0bc); transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); }
+        .gabby-button:active { transform: translateY(1px); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); }
+        a.gabby-button { text-decoration: none; box-sizing: border-box; }
+        @keyframes magicShimmer { 0% { box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 0 0 10px #fff, 0 0 20px #ffc1cb; } 50% { box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 0 0 30px #fff, 0 0 40px #f0e68c; } 100% { box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 0 0 10px #fff, 0 0 20px #ffc1cb; } }
+        .shimmer-button { animation: magicShimmer 2s infinite; }
+        @keyframes boingBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        .bounce-button:hover { animation: boingBounce 0.5s ease; }
+        #page-bienvenida { background-color: #f0f8ff; background-image: radial-gradient(circle, rgba(255,192,203,0.3) 0%, rgba(255,192,203,0) 70%); }
+        #page-bienvenida .animated-message { font-size: 1.3em; color: #ff69b4; opacity: 0; animation: fadeIn 2s ease 1s forwards; font-weight: 700; }
+        @keyframes fadeIn { to { opacity: 1; } }
+        #page-portada { background: linear-gradient(to bottom, #ffffff, #fdf5e6); }
+        #page-portada .logo { width: 250px; max-width: 80%; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        #page-portada h1 { color: #6a5acd; font-size: 1.8em; }
+        #page-historia { background-color: #e6e6fa; overflow-y: auto; justify-content: flex-start; }
+        .historia-container { display: flex; flex-direction: column; gap: 20px; align-items: center; justify-content: flex-start; width: 100%; }
+        .historia-container img { width: 250px; max-width: 80%; margin-top: 10px; }
+        .cuento-bloque { background: rgba(255, 255, 255, 0.9); border: 4px solid #ffb6c1; border-radius: 20px; padding: 15px; width: 90%; max-width: 500px; font-size: 1.1em; line-height: 1.6; color: #333; text-align: center; }
         .cuento-bloque strong { color: #ff69b4; }
-        .historia-botones {
-            margin-top: 15px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            width: 100%;
-            align-items: center;
-            padding-bottom: 30px;
-        }
-
-        /* -- Ventana Sorpresa (Confeti) -- */
-        #sorpresa-popup {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 182, 193, 0.85); /* Fondo Rosa Translúcido */
-            backdrop-filter: blur(5px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            visibility: hidden;
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: 100;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        #sorpresa-popup.active {
-            visibility: visible;
-            opacity: 1;
-        }
-        .sorpresa-content {
-            position: relative;
-            padding: 30px 20px;
-            border: 5px solid #fff;
-            border-radius: 20px;
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
-            text-align: center;
-            width: 90%;
-            max-width: 500px;
-            background: #ff69b4;
-        }
-        #typewriter-text {
-            font-family: 'Kalam', cursive;
-            font-weight: 700;
-            font-size: 1.5em;
-            color: #fff;
-            line-height: 1.6;
-            text-shadow: 2px 2px #c71585;
-        }
-        .close-popup {
-            position: absolute;
-            top: 5px;
-            right: 10px;
-            font-size: 40px;
-            color: #fff;
-            cursor: pointer;
-            background: none;
-            border: none;
-            width: auto;
-            box-shadow: none;
-            margin-bottom: 0;
-        }
-        /* -- Lluvia de Confeti/Estrellas -- */
-        @keyframes fall {
-            0% { top: -10%; transform: rotate(0deg); }
-            100% { top: 110%; transform: rotate(360deg); }
-        }
-        .confetti {
-            position: absolute;
-            font-size: 2em; /* Estrellas y brillos */
-            animation: fall linear infinite;
-            top: -10%;
-            color: white;
-        }
-
-        /* --- Página 4: Cierre --- */
-        #page-cierre {
-            background-color: #fffaf0; /* Crema */
-            overflow-y: auto;
-            justify-content: center;
-            padding-top: 50px;
-            padding-bottom: 50px;
-        }
-        #page-cierre .logo {
-            width: 200px;
-            max-width: 70%;
-            border-radius: 20px;
-        }
-        #page-cierre .lema {
-            font-size: 1.1em;
-            color: #555;
-            margin-top: -15px;
-        }
-        #page-cierre .frase-final {
-            font-size: 1.3em;
-            color: #ff69b4;
-            font-weight: 700;
-            margin-top: 30px;
-            margin-bottom: 30px;
-            text-shadow: 1px 1px #fff;
-        }
-
-        /* --- PÁGINA 5: TARJETA DE CUMPLEAÑOS --- */
-        #page-certificado {
-            background: #fdf5e6;
-            overflow-y: auto;
-            justify-content: flex-start;
-        }
-        .certificado-content {
-            width: 95%;
-            max-width: 700px;
-            background: #fff;
-            border: 10px solid #ffb6c1; /* Borde Rosa */
-            border-radius: 20px;
-            padding: 20px;
-            box-sizing: border-box;
-            text-align: center;
-            color: #333;
-            margin-top: 20px;
-        }
-        .certificado-content h1 {
-            color: #ff69b4;
-            font-size: 1.5em;
-            text-shadow: none;
-        }
-        .certificado-body {
-            font-size: 1.1em;
-            line-height: 2;
-            margin-top: 20px;
-            margin-bottom: 30px;
-        }
-        .campo-rellenable { /* "De:" */
-            font-weight: 700;
-            color: #000;
-            font-size: 1.2em;
-            background: #f0f8ff;
-            padding: 5px 10px;
-            border-radius: 10px;
-        }
-        .campo-static { /* "María José" */
-            font-weight: 700;
-            color: #c71585; /* Rosa Fuerte */
-            font-size: 1.3em;
-            padding: 5px;
-        }
-        
-        @media (min-width: 768px) {
-            h1 { font-size: 3em; }
-            p { font-size: 1.3em; }
-            .gabby-button { width: auto; max-width: none; }
-            .close-popup { width: auto; }
-            #page-bienvenida .animated-message { font-size: 1.8em; }
-            #page-portada .logo { width: 300px; }
-            #page-historia { overflow-y: hidden; justify-content: center;}
-            .historia-container {
-                flex-direction: row;
-                gap: 30px;
-                padding: 40px;
-                max-width: 1000px;
-                justify-content: center;
-                align-items: center;
-            }
-            .historia-container img { width: 300px; margin-top: 0; }
-            .cuento-bloque {
-                width: 500px;
-                font-size: 1.2em;
-                padding: 30px;
-            }
-            .historia-botones {
-                flex-direction: column;
-                gap: 15px;
-                width: auto;
-                padding-bottom: 0;
-            }
-            .sorpresa-content {
-                width: auto;
-                padding: 50px;
-            }
-            #typewriter-text { font-size: 2em; }
-            #page-cierre {
-                overflow-y: hidden;
-                justify-content: center;
-                padding-top: 20px;
-                padding-bottom: 20px;
-            }
-            #page-cierre .logo { width: 250px; }
-            #page-cierre .lema { font-size: 1.3em; }
-            #page-cierre .frase-final { font-size: 1.8em; }
-            .certificado-content { width: 700px; padding: 40px; margin-top: 0;}
-            .certificado-content h1 { font-size: 2.2em; }
-            .certificado-body { font-size: 1.3em; }
-        }
+        .historia-botones { margin-top: 15px; display: flex; flex-direction: column; gap: 15px; width: 100%; align-items: center; padding-bottom: 30px; }
+        #sorpresa-popup { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 182, 193, 0.85); backdrop-filter: blur(5px); display: flex; justify-content: center; align-items: center; visibility: hidden; opacity: 0; transition: all 0.3s ease; z-index: 100; padding: 20px; box-sizing: border-box; }
+        #sorpresa-popup.active { visibility: visible; opacity: 1; }
+        .sorpresa-content { position: relative; padding: 30px 20px; border: 5px solid #fff; border-radius: 20px; box-shadow: 0 0 30px rgba(0,0,0,0.5); text-align: center; width: 90%; max-width: 500px; background: #ff69b4; }
+        #typewriter-text { font-family: 'Kalam', cursive; font-weight: 700; font-size: 1.5em; color: #fff; line-height: 1.6; text-shadow: 2px 2px #c71585; }
+        .close-popup { position: absolute; top: 5px; right: 10px; font-size: 40px; color: #fff; cursor: pointer; background: none; border: none; width: auto; box-shadow: none; margin-bottom: 0; }
+        @keyframes fall { 0% { top: -10%; transform: rotate(0deg); } 100% { top: 110%; transform: rotate(360deg); } }
+        .confetti { position: absolute; font-size: 2em; animation: fall linear infinite; top: -10%; color: white; }
+        #page-cierre { background-color: #fffaf0; overflow-y: auto; justify-content: center; padding-top: 50px; padding-bottom: 50px; }
+        #page-cierre .logo { width: 200px; max-width: 70%; border-radius: 20px; }
+        #page-cierre .lema { font-size: 1.1em; color: #555; margin-top: -15px; }
+        #page-cierre .frase-final { font-size: 1.3em; color: #ff69b4; font-weight: 700; margin-top: 30px; margin-bottom: 30px; text-shadow: 1px 1px #fff; }
+        #page-certificado { background: #fdf5e6; overflow-y: auto; justify-content: flex-start; }
+        .certificado-content { width: 95%; max-width: 700px; background: #fff; border: 10px solid #ffb6c1; border-radius: 20px; padding: 20px; box-sizing: border-box; text-align: center; color: #333; margin-top: 20px; }
+        .certificado-content h1 { color: #ff69b4; font-size: 1.5em; text-shadow: none; }
+        .certificado-body { font-size: 1.1em; line-height: 2; margin-top: 20px; margin-bottom: 30px; }
+        .campo-rellenable { font-weight: 700; color: #000; font-size: 1.2em; background: #f0f8ff; padding: 5px 10px; border-radius: 10px; }
+        .campo-static { font-weight: 700; color: #c71585; font-size: 1.3em; padding: 5px; }
+        @media (min-width: 768px) { h1 { font-size: 3em; } p { font-size: 1.3em; } .gabby-button { width: auto; max-width: none; } .close-popup { width: auto; } #page-bienvenida .animated-message { font-size: 1.8em; } #page-portada .logo { width: 300px; } #page-historia { overflow-y: hidden; justify-content: center;} .historia-container { flex-direction: row; gap: 30px; padding: 40px; max-width: 1000px; justify-content: center; align-items: center; } .historia-container img { width: 300px; margin-top: 0; } .cuento-bloque { width: 500px; font-size: 1.2em; padding: 30px; } .historia-botones { flex-direction: column; gap: 15px; width: auto; padding-bottom: 0; } .sorpresa-content { width: auto; padding: 50px; } #typewriter-text { font-size: 2em; } #page-cierre { overflow-y: hidden; justify-content: center; padding-top: 20px; padding-bottom: 20px; } #page-cierre .logo { width: 250px; } #page-cierre .lema { font-size: 1.3em; } #page-cierre .frase-final { font-size: 1.8em; } .certificado-content { width: 700px; padding: 40px; margin-top: 0;} .certificado-content h1 { font-size: 2.2em; } .certificado-body { font-size: 1.3em; } }
     </style>
 </head>
 <body>
@@ -436,13 +122,14 @@
     </div>
 
     <audio id="sound-background" src="https://archive.org/download/gabbys-dollhouse-theme-song/Gabby%27s%20Dollhouse%20Theme%20Song.mp3" loop preload="auto"></audio>
-    <audio id="sound-magic" src="https://assets.mixkit.co/sfx/preview/mixkit-magic-sweep-game-trophy-257.mp3" preload="auto"></audio>
-    <audio id="sound-click" src="https://assets.mixkit.co/sfx/preview/mixkit-bonus-earned-in-video-game-2058.mp3" preload="auto"></audio>
-    <audio id="sound-bounce" src="https://assets.mixkit.co/sfx/preview/mixkit-player-jumping-in-a-video-game-2043.mp3" preload="auto"></audio>
+    
+    <audio id="sound-magic" src="gabby_magia.mp3" preload="auto"></audio>
+    <audio id="sound-click" src="gabby_click.mp3" preload="auto"></audio>
+    <audio id="sound-bounce" src="gabby_rebote.mp3" preload="auto"></audio>
 
 
     <script>
-        /* --- Lógica de Navegación y Sonidos --- */
+        /* --- Lógica de Navegación y Sonidos (Sin cambios) --- */
         const pages = document.querySelectorAll('.page');
         const btnComenzar = document.getElementById('btn-comenzar');
         const btnEntrar = document.getElementById('btn-entrar');
@@ -547,7 +234,6 @@
             if (de) {
                 elDe.textContent = de; // Lo rellena si existe
             } else {
-                // Si no, usa el valor por defecto que me diste
                 elDe.textContent = "Luz Elena y Valentina"; 
             }
         }
